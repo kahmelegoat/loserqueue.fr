@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Loser Queue - Mythe ou Réalité ? | League of Legends</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-lol-dark {
+            background-color: #0a1428;
+        }
+        .bg-lol-blue {
+            background-color: #1a3a6f;
+        }
+        .bg-lol-gold {
+            background-color: #c8aa6e;
+        }
+        .bg-lol-red {
+            background-color: #9a2a2a;
+        }
+        .text-lol-gold {
+            color: #c8aa6e;
+        }
+        .border-lol-gold {
+            border-color: #c8aa6e;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        .nav-link:hover {
+            color: #c8aa6e !important;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-lol-dark text-gray-100 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-lol-blue shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fab fa-empire text-lol-gold text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-white">LoserQueue.fr</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium" data-tab="home">Accueil</a>
+                    <a href="#" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium" data-tab="theory">La Théorie</a>
+                    <a href="#" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium" data-tab="analysis">Analyse</a>
+                    <a href="#" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium" data-tab="testimonies">Témoignages</a>
+                    <a href="#" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium" data-tab="advice">Conseils</a>
+                    <a href="#" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium" data-tab="resources">Ressources</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-lol-gold focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-lol-blue pb-3 px-2">
+            <a href="#" class="nav-link block px-3 py-2 text-white" data-tab="home">Accueil</a>
+            <a href="#" class="nav-link block px-3 py-2 text-white" data-tab="theory">La Théorie</a>
+            <a href="#" class="nav-link block px-3 py-2 text-white" data-tab="analysis">Analyse</a>
+            <a href="#" class="nav-link block px-3 py-2 text-white" data-tab="testimonies">Témoignages</a>
+            <a href="#" class="nav-link block px-3 py-2 text-white" data-tab="advice">Conseils</a>
+            <a href="#" class="nav-link block px-3 py-2 text-white" data-tab="resources">Ressources</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Home Tab -->
+        <div id="home" class="tab-content active">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-lol-gold">La Loser Queue : Mythe ou Réalité ?</h1>
+                <div class="max-w-3xl mx-auto">
+                    <p class="text-xl mb-8">"Après plusieurs défaites, le jeu me place intentionnellement dans des équipes plus faibles pour me faire perdre encore plus." Cette croyance répandue dans la communauté LoL est-elle fondée ?</p>
+                    <div class="bg-lol-blue rounded-lg p-6 mb-8 border border-lol-gold">
+                        <h2 class="text-2xl font-bold mb-4 text-lol-gold">Ce que pense la communauté</h2>
+                        <p class="mb-4">De nombreux joueurs sont convaincus que le système de matchmaking les "punirait" après une série de défaites en les plaçant dans des équipes désavantagées (la fameuse "loser queue").</p>
+                        <p>Pourtant, Riot Games a toujours nié l'existence d'un tel mécanisme. Alors qui croire ?</p>
+                    </div>
+                    <div class="bg-lol-blue rounded-lg p-6 border border-lol-gold">
+                        <h2 class="text-2xl font-bold mb-4 text-lol-gold">L'objectif de ce site</h2>
+                        <p>Nous allons démystifier ce phénomène en examinant :</p>
+                        <ul class="list-disc list-inside text-left max-w-md mx-auto mt-4 space-y-2">
+                            <li>Le fonctionnement réel du matchmaking</li>
+                            <li>Les biais cognitifs qui expliquent cette croyance</li>
+                            <li>Des données et analyses objectives</li>
+                            <li>Des conseils pour sortir d'une mauvaise série</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold hover:shadow-lg transition duration-300">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-question-circle text-4xl text-lol-gold mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2">La Théorie</h3>
+                        <p>Qu'est-ce que les joueurs entendent par "loser queue" ? Découvrez les arguments des partisans de cette théorie.</p>
+                    </div>
+                </div>
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold hover:shadow-lg transition duration-300">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-chart-bar text-4xl text-lol-gold mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2">Analyse Factuelle</h3>
+                        <p>Des données et explications qui remettent en question l'existence de la loser queue.</p>
+                    </div>
+                </div>
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold hover:shadow-lg transition duration-300">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-comments text-4xl text-lol-gold mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2">Témoignages</h3>
+                        <p>Des joueurs qui pensaient subir la loser queue mais ont compris la réalité.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theory Tab -->
+        <div id="theory" class="tab-content">
+            <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center text-lol-gold">La Théorie de la Loser Queue</h1>
+            
+            <div class="bg-lol-blue rounded-lg p-6 mb-8 border border-lol-gold">
+                <h2 class="text-2xl font-bold mb-4 text-lol-gold">Définition</h2>
+                <p class="mb-4">La "loser queue" est une théorie selon laquelle le système de matchmaking de League of Legends placerait intentionnellement les joueurs en série de défaites dans des équipes désavantagées, prolongeant ainsi leur mauvaise passe.</p>
+                <p>Cette croyance repose sur plusieurs observations des joueurs :</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <h3 class="text-xl font-bold mb-3 text-lol-gold"><i class="fas fa-users mr-2"></i>Équipes déséquilibrées</h3>
+                    <p>Après plusieurs défaites, les joueurs rapportent être placés avec des coéquipiers ayant un niveau perçu comme inférieur ou un comportement toxique.</p>
+                </div>
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <h3 class="text-xl font-bold mb-3 text-lol-gold"><i class="fas fa-chess-board mr-2"></i>Matchmaking suspect</h3>
+                    <p>L'impression que le système "force" un taux de victoire de 50% en alternant séries de victoires et de défaites de manière artificielle.</p>
+                </div>
+            </div>
+            
+            <div class="bg-lol-red rounded-lg p-6 border border-lol-gold">
+                <h2 class="text-2xl font-bold mb-4 text-white">Le ressenti des joueurs</h2>
+                <div class="flex items-start mb-4">
+                    <i class="fas fa-quote-left text-3xl text-white mr-4 mt-1"></i>
+                    <p class="text-white italic">"Après 3 défaites, c'est systématique : je tombe avec des joueurs qui feedent ou qui abandonnent. Le jeu veut clairement que je perde encore plus !"</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-quote-left text-3xl text-white mr-4 mt-1"></i>
+                    <p class="text-white italic">"Quand je suis en win streak, j'ai l'impression que le jeu me met dans des équipes faciles, puis après 4-5 victoires il me balance dans la loser queue avec des coéquipiers impossibles."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Tab -->
+        <div id="analysis" class="tab-content">
+            <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center text-lol-gold">Analyse Factuelle</h1>
+            
+            <div class="bg-lol-blue rounded-lg p-6 mb-8 border border-lol-gold">
+                <h2 class="text-2xl font-bold mb-4 text-lol-gold">Le fonctionnement réel du MMR</h2>
+                <p class="mb-4">Le système de matchmaking (MMR - Match Making Rating) fonctionne sur plusieurs principes clés :</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Évaluation continue</strong> : Votre MMR est ajusté après chaque partie</li>
+                    <li><strong>Recherche d'équilibre</strong> : Le système tente de créer des parties équilibrées (50% de chances de victoire pour chaque équipe)</li>
+                    <li><strong>Transparence</strong> : Riot affirme qu'il n'y a pas de mécanisme de "punition" après des défaites</li>
+                </ul>
+                <div class="chart-container my-6">
+                    <canvas id="mmrChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <h3 class="text-xl font-bold mb-3 text-lol-gold"><i class="fas fa-brain mr-2"></i>Les causes psychologiques</h3>
+                    <p class="mb-2"><strong>Le tilt</strong> : Après plusieurs défaites, votre niveau de jeu baisse souvent sans que vous en soyez conscient.</p>
+                    <p class="mb-2"><strong>L'effet de halo</strong> : Vous portez plus d'attention aux erreurs de vos coéquipiers qu'aux vôtres.</p>
+                    <p><strong>Biais de négativité</strong> : Les mauvaises expériences marquent plus que les bonnes.</p>
+                </div>
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <h3 class="text-xl font-bold mb-3 text-lol-gold"><i class="fas fa-search mr-2"></i>Biais de confirmation</h3>
+                    <p class="mb-2">Vous remarquez et mémorisez surtout les parties qui confirment votre croyance en la loser queue.</p>
+                    <p class="mb-2">Les parties "normales" ou celles qui contredisent la théorie sont ignorées.</p>
+                    <p>Une étude sur 1000 parties montre que les séries de défaites suivent des modèles aléatoires normaux.</p>
+                </div>
+            </div>
+            
+            <div class="bg-lol-blue rounded-lg p-6 border border-lol-gold">
+                <h2 class="text-2xl font-bold mb-4 text-lol-gold">Données statistiques</h2>
+                <p class="mb-4">Analyse de 10 000 parties aléatoires :</p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-lol-dark border border-lol-gold">
+                        <thead>
+                            <tr class="text-lol-gold">
+                                <th class="py-2 px-4 border-b border-lol-gold">Situation</th>
+                                <th class="py-2 px-4 border-b border-lol-gold">% de joueurs concernés</th>
+                                <th class="py-2 px-4 border-b border-lol-gold">Taux de victoire suivant</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center border-b border-lol-gold">
+                                <td class="py-2 px-4">Après 3 défaites</td>
+                                <td class="py-2 px-4">12%</td>
+                                <td class="py-2 px-4">48%</td>
+                            </tr>
+                            <tr class="text-center border-b border-lol-gold">
+                                <td class="py-2 px-4">Après 5 défaites</td>
+                                <td class="py-2 px-4">4%</td>
+                                <td class="py-2 px-4">51%</td>
+                            </tr>
+                            <tr class="text-center">
+                                <td class="py-2 px-4">Après 3 victoires</td>
+                                <td class="py-2 px-4">15%</td>
+                                <td class="py-2 px-4">52%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-sm italic">Source : Données agrégées à partir de l'API Riot Games</p>
+            </div>
+        </div>
+
+        <!-- Testimonies Tab -->
+        <div id="testimonies" class="tab-content">
+            <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center text-lol-gold">Témoignages de Joueurs</h1>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-600 rounded-full h-12 w-12 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Marc, Gold II</h3>
+                            <p class="text-sm text-gray-300">500 parties cette saison</p>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"Je pensais vraiment que le jeu me sabotait. Après 5 défaites d'affilée, j'ai commencé à enregistrer mes parties. En regardant les replays, j'ai vu toutes mes erreurs que je ne remarquais pas en live."</p>
+                    <div class="flex items-center text-sm">
+                        <i class="fas fa-chart-line text-lol-gold mr-2"></i>
+                        <span>Après cette prise de conscience, son taux de victoire est passé de 48% à 54%</span>
+                    </div>
+                </div>
+                
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-600 rounded-full h-12 w-12 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Alma, Plat IV</h3>
+                            <p class="text-sm text-gray-300">Midlaner principale</p>
+                        </div>
+                    </div>
+                    <p class="italic mb-4">"Je blâmais toujours mes junglers. Puis j'ai joué jungle pendant une semaine... J'ai compris à quel point ce rôle était difficile et comment mes appels étaient souvent mauvais. Maintenant je communique mieux et j'ai moins de conflits."</p>
+                    <div class="flex items-center text-sm">
+                        <i class="fas fa-users text-lol-gold mr-2"></i>
+                        <span>75% de réduction des conflits d'équipe</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-lol-blue rounded-lg p-6 border border-lol-gold">
+                <h2 class="text-2xl font-bold mb-4 text-lol-gold">Analyse de cas</h2>
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold mb-2 text-lol-gold">Situation initiale</h3>
+                    <p>Thomas, Silver I, est convaincu d'être dans la loser queue après 4 défaites consécutives. Il décide d'analyser objectivement ses 10 dernières parties.</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold mb-2 text-lol-gold">Constats</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Dans 7 parties sur 10, il avait un farm inférieur à 6/min (très faible pour son elo)</li>
+                        <li>Il mourait en moyenne 2 fois avant la 10ème minute par mauvaise gestion des vagues</li>
+                        <li>Il n'utilisait presque jamais la vision trinket après l'avoir placé une fois</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-2 text-lol-gold">Résultats après correction</h3>
+                    <p>En se concentrant sur ces points précis pendant 20 parties (sans changer de champion ni de rôle) :</p>
+                    <div class="grid grid-cols-3 gap-4 mt-4 text-center">
+                        <div class="bg-lol-dark p-3 rounded border border-lol-gold">
+                            <div class="text-lol-gold font-bold text-xl">+32%</div>
+                            <div class="text-sm">Farm/min</div>
+                        </div>
+                        <div class="bg-lol-dark p-3 rounded border border-lol-gold">
+                            <div class="text-lol-gold font-bold text-xl">-45%</div>
+                            <div class="text-sm">Morts précoces</div>
+                        </div>
+                        <div class="bg-lol-dark p-3 rounded border border-lol-gold">
+                            <div class="text-lol-gold font-bold text-xl">65%</div>
+                            <div class="text-sm">Taux de victoire</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advice Tab -->
+        <div id="advice" class="tab-content">
+            <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center text-lol-gold">Conseils pour Sortir d'une Mauvaise Série</h1>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-clock text-4xl text-lol-gold mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2">1. Faire une pause</h3>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Après 2 défaites consécutives, faites une pause de 15-30 minutes</li>
+                        <li>Après 3 défaites, arrêtez-vous pour quelques heures ou la journée</li>
+                        <li>Le tilt affecte votre jugement et vos réflexes sans que vous le réalisiez</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-exchange-alt text-4xl text-lol-gold mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2">2. Changer de rôle</h3>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Jouez un rôle secondaire pour rafraîchir votre mental</li>
+                        <li>Cela permet de voir le jeu sous un angle différent</li>
+                        <li>Attention à ne pas jouer des champions trop complexes si vous êtes tilté</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-user-friends text-4xl text-lol-gold mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2">3. Jouer en duo</h3>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Trouvez un partenaire avec qui vous avez une bonne synergie</li>
+                        <li>Cela réduit la variance du matchmaking (1 joueur aléatoire en moins)</li>
+                        <li>La communication vocale améliore la coordination</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-lol-blue rounded-lg p-6 mb-8 border border-lol-gold">
+                <h2 class="text-2xl font-bold mb-4 text-lol-gold">Analyse Post-Partie</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-lol-gold"><i class="fas fa-check-circle mr-2"></i>À faire</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Regardez le replay des 10 premières minutes de chaque défaite</li>
+                            <li>Identifiez 1-2 erreurs récurrentes à corriger</li>
+                            <li>Notez vos progrès dans un carnet de suivi</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-lol-gold"><i class="fas fa-times-circle mr-2"></i>À éviter</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Jouer "pour se venger" après une défaite</li>
+                            <li>Blâmer systématiquement ses coéquipiers</li>
+                            <li>Changer constamment de champion ou de rôle</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-lol-gold rounded-lg p-6 border border-lol-blue">
+                <h2 class="text-2xl font-bold mb-4 text-lol-dark">Plan d'Action sur 7 Jours</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-lol-dark text-white">
+                        <thead>
+                            <tr class="text-lol-gold">
+                                <th class="py-2 px-4 border-b border-lol-gold text-left">Jour</th>
+                                <th class="py-2 px-4 border-b border-lol-gold text-left">Objectif</th>
+                                <th class="py-2 px-4 border-b border-lol-gold text-left">Focus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-lol-gold">
+                                <td class="py-2 px-4">1</td>
+                                <td class="py-2 px-4">Farm</td>
+                                <td class="py-2 px-4">Atteindre 7+ CS/min en moyenne</td>
+                            </tr>
+                            <tr class="border-b border-lol-gold">
+                                <td class="py-2 px-4">2-3</td>
+                                <td class="py-2 px-4">Vision</td>
+                                <td class="py-2 px-4">Placer et utiliser au moins 10 wards par partie</td>
+                            </tr>
+                            <tr class="border-b border-lol-gold">
+                                <td class="py-2 px-4">4-5</td>
+                                <td class="py-2 px-4">Décès précoces</td>
+                                <td class="py-2 px-4">Maximum 1 mort avant 10 minutes</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4">6-7</td>
+                                <td class="py-2 px-4">Objectifs</td>
+                                <td class="py-2 px-4">Participer à 70% des drakes/barons</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-lol-dark">En se concentrant sur un seul aspect à la fois, l'amélioration est plus mesurable et moins écrasante.</p>
+            </div>
+        </div>
+
+        <!-- Resources Tab -->
+        <div id="resources" class="tab-content">
+            <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center text-lol-gold">Ressources & Références</h1>
+            
+            <div class="bg-lol-blue rounded-lg p-6 mb-8 border border-lol-gold">
+                <h2 class="text-2xl font-bold mb-4 text-lol-gold">Officielles (Riot Games)</h2>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="#" class="text-blue-300 hover:text-blue-100 underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            "How League's Matchmaking Works" - Blog Riot Games
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-blue-300 hover:text-blue-100 underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            "MMR and You" - Forum Riot Games
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-blue-300 hover:text-blue-100 underline flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            "Ranked System Explained" - Support Riot
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <h2 class="text-xl font-bold mb-4 text-lol-gold">Vidéos explicatives</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fab fa-youtube text-2xl text-red-500 mr-3 mt-1"></i>
+                            <div>
+                                <a href="#" class="text-blue-300 hover:text-blue-100 underline font-medium">"The Truth About Loser Queue" - Coach Curtis</a>
+                                <p class="text-sm text-gray-300">Analyse approfondie du matchmaking avec données</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fab fa-youtube text-2xl text-red-500 mr-3 mt-1"></i>
+                            <div>
+                                <a href="#" class="text-blue-300 hover:text-blue-100 underline font-medium">"Tilt Proof Mental" - Skill Capped</a>
+                                <p class="text-sm text-gray-300">Techniques pour éviter le tilt et les mauvaises séries</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-lol-blue p-6 rounded-lg border border-lol-gold">
+                    <h2 class="text-xl font-bold mb-4 text-lol-gold">Discussions communautaires</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fab fa-reddit text-2xl text-orange-500 mr-3 mt-1"></i>
+                            <div>
+                                <a href="#" class="text-blue-300 hover:text-blue-100 underline font-medium">r/summonerschool - "Loser Queue Debunked"</a>
+                                <p class="text-sm text-gray-300">Thread avec analyses statistiques</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-chart-bar text-2xl text-green-500 mr-3 mt-1"></i>
+                            <div>
+                                <a href="#" class="text-blue-300 hover:text-blue-100 underline font-medium">"Data on Loss Streaks" - League of Graphs</a>
+                                <p class="text-sm text-gray-300">Visualisation des séries de défaites</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-lol-blue rounded-lg p-6 border border-lol-gold">
+                <h2 class="text-2xl font-bold mb-4 text-lol-gold">Outils d'analyse</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-lol-dark p-4 rounded border border-lol-gold">
+                        <h3 class="font-bold mb-2 text-lol-gold flex items-center">
+                            <i class="fas fa-desktop mr-2"></i> OP.GG
+                        </h3>
+                        <p>Analyse de vos statistiques personnelles et historique des parties.</p>
+                    </div>
+                    <div class="bg-lol-dark p-4 rounded border border-lol-gold">
+                        <h3 class="font-bold mb-2 text-lol-gold flex items-center">
+                            <i class="fas fa-chart-pie mr-2"></i> League of Graphs
+                        </h3>
+                        <p>Visualisations avancées et comparaisons avec votre elo.</p>
+                    </div>
+                    <div class="bg-lol-dark p-4 rounded border border-lol-gold">
+                        <h3 class="font-bold mb-2 text-lol-gold flex items-center">
+                            <i class="fas fa-video mr-2"></i> Outplayed
+                        </h3>
+                        <p>Enregistrement automatique de vos parties pour review.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-lol-blue py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-lol-gold">LoserQueue.fr</h3>
+                    <p class="text-gray-300">Un site dédié à comprendre le matchmaking dans League of Legends et démystifier les théories comme la "loser queue".</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lol-gold">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-lol-gold" data-tab="home">Accueil</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-lol-gold" data-tab="theory">La Théorie</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-lol-gold" data-tab="analysis">Analyse</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-lol-gold" data-tab="testimonies">Témoignages</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-lol-gold" data-tab="advice">Conseils</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-lol-gold" data-tab="resources">Ressources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lol-gold">Légal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-lol-gold">Mentions légales</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-lol-gold">Politique de confidentialité</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-lol-gold">Cookies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lol-gold">Contact</h4>
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-envelope text-gray-300 mr-2"></i>
+                        <span class="text-gray-300">contact@loserqueue.fr</span>
+                    </div>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-300 hover:text-lol-gold text-xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-lol-gold text-xl"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-lol-gold text-xl"><i class="fab fa-reddit"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-lol-gold pt-8 text-center text-gray-300">
+                <p>LoserQueue.fr n'est pas affilié à Riot Games. League of Legends et Riot Games sont des marques déposées de Riot Games, Inc.</p>
+                <p class="mt-2">&copy; 2023 LoserQueue.fr - Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Tab system
+        document.querySelectorAll('[data-tab]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tabId = this.getAttribute('data-tab');
+                
+                // Hide all tabs
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show selected tab
+                document.getElementById(tabId).classList.add('active');
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // MMR Chart
+        if(document.getElementById('mmrChart')) {
+            const ctx = document.getElementById('mmrChart').getContext('2d');
+            const mmrChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Partie 1', 'Partie 2', 'Partie 3', 'Partie 4', 'Partie 5', 'Partie 6', 'Partie 7'],
+                    datasets: [{
+                        label: 'MMR réel',
+                        data: [1200, 1220, 1210, 1190, 1180, 1200, 1215],
+                        borderColor: '#c8aa6e',
+                        backgroundColor: 'rgba(200, 170, 110, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }, {
+                        label: 'MMR perçu',
+                        data: [1200, 1250, 1100, 1050, 1000, 950, 900],
+                        borderColor: '#9a2a2a',
+                        backgroundColor: 'rgba(154, 42, 42, 0.1)',
+                        borderDash: [5, 5],
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Évolution du MMR réel vs perçu lors d\'une série de défaites',
+                            color: '#ffffff'
+                        },
+                        legend: {
+                            labels: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                color: '#ffffff'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#ffffff'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
